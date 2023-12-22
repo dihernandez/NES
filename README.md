@@ -1,1 +1,1 @@
-Making an NES emulator in C++, startign with the 6502 processor
+Making an NES emulator in C++, starting with the 6502 processor

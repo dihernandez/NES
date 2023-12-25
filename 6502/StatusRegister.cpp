@@ -47,6 +47,16 @@ void StatusRegister::set_status() {
   status = new_status;
 }
 
+void StatusRegister::reset_status() {
+  set_carry(false);
+  set_zero(false);
+  set_interrupt_disable(false);
+  set_decimal(false);
+  set_bflag(false);
+  set_v_overflow(false);
+  set_negative(false);
+}
+
 void StatusRegister::set_carry(bool carry) {
   Carry = carry;
   set_status();

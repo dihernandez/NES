@@ -16,6 +16,7 @@ public:
   StatusRegister();
 
   void set_status();
+  void reset_status();
 
   void set_carry(bool carry);
   void set_zero(bool zero);

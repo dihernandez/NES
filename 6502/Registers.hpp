@@ -33,8 +33,13 @@ public:
   uint8_t get_stack_pointer();
   int8_t get_memory_at(int memory_index);
 
-  bool set_program_counter(uint16_t new_pc);
-  bool set_status(uint8_t);
+  void set_program_counter(uint16_t new_pc);
+  void set_status(uint8_t new_status);
+  void set_accumulator(int8_t new_accumulator);
+  void set_register_x(int8_t new_x);
+  void set_register_y(int8_t new_y);
+  void set_stack_pointer(uint8_t new_sp);
+  bool set_memory_at(int8_t data, int memory_index);
 
 };
 

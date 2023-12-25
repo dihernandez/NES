@@ -91,3 +91,71 @@ int8_t Registers::get_memory_at(int memory_index) {
   assert((memory_index < 0 || memory_index > 2047) && "Memory index out of range");
   return memory[memory_index];
 }
+
+void Registers::set_program_counter(uint16_t new_pc) {
+  program_counter = new_pc;
+}
+
+void Registers::set_status(uint8_t new_status) {
+  if(0b00000001 & new_status) {
+    status_register->set_carry(true);
+  } else {
+    status_register->set_carry(false);
+  }
+  if(0b00000010 & new_status) {
+    status_register->set_zero(true);
+  } else {
+    status_register->set_zero(false);
+  }
+  if(0b00000100 & new_status) {
+    status_register->set_interrupt_disable(true);
+  } else {
+    status_register->set_interrupt_disable(false);
+  }
+  if(0b00001000 & new_status) {
+    status_register->set_decimal(true);
+  } else {
+    status_register->set_decimal(false);
+  }
+  if(0b00010000 & new_status) {
+    status_register->set_bflag(true);
+  } else {
+    status_register->set_bflag(false);
+  }
+  if(0b01000000 & new_status) {
+    status_register->set_v_overflow(true);
+  } else {
+    status_register->set_v_overflow(false);
+  }
+  if(0b10000000 & new_status) {
+    status_register->set_negative(true);
+  } else {
+    status_register->set_negative(false);
+  }
+}
+
+void Registers::set_accumulator(int8_t new_accumulator) {
+  accumulator = new_accumulator;
+}
+
+void Registers::set_register_x(int8_t new_x) {
+  register_x = new_x;
+}
+
+void Registers::set_register_y(int8_t new_y) {
+  register_y = new_y;
+}
+
+void Registers::set_stack_pointer(uint8_t new_sp) {
+  stack_pointer = new_sp;
+}
+
+bool Registers::set_memory_at(int8_t data, int memory_index) {
+  if(memory_index < 0 || memory_index > 2047) {
+    return false;
+  }
+  else {
+    memory[memory_index] = data;
+    return true;
+  }
+}
